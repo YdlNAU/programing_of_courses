@@ -128,7 +128,7 @@ while 1,
 	end
 	
 	if sum (sigma_N > 0) == 1,
-		ind = find (sigma_N < 0);
+		ind = find (sigma_N > 0);
 		if sum ( A(:, x_not_base(ind)) > 0 ) ==0,
 			disp("No optimal solution! 无界解！\n")
 			break;
@@ -145,14 +145,14 @@ while 1,
 	z = c_B * B_inv * b; % b won't change !
 	sigma_N = c_N - c_B * B_inv * N
   sigma = c' - c_B* B_inv *A
-
+  x_base
   
   
   % get the target and x
   z = c_B * B_inv * b
   x_B = B_inv * b;
   x = zeros ( size (A,2),1 );
-  x(x_base) = x_B
+  x(x_base) = x_B;
   
 	
 

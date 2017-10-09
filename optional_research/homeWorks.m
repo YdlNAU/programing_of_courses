@@ -12,6 +12,7 @@ ub=[];
 ctype = "LU";
 vartype = "CC";
 sense = -1;     % 1 is minimization; -1 is maximization
+
 %首先直接用glpk解
 [xopt, fopt, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, sense);
 
@@ -66,7 +67,7 @@ ub=[];
 sense = 1; 
 [xopt, fopt, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, sense);
 
-% p55 2.2 
+% p55 2.3
 %%(1)
 c = [2 3 4 7]';
 A = [2 3 -1 -4;
