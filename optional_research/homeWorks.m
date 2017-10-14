@@ -22,7 +22,7 @@ sense = -1;     % 1 is minimization; -1 is maximization
 break
 % 再调用glpk验证
 sense = -1;
-ctype = "S"
+ctype = "SS"
 [xopt, fopt, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, sense);
 
 

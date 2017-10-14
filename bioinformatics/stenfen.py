@@ -36,14 +36,19 @@ def align(seq_A , seq_B):
 
 def backtracing(D):
     (i , j) = D.shape;
+    # 注意要减1， 因为行和列从0下标开始！
+    i = i - 1;
+    j = j - 1;
 
     P = [];
     while( i > 0 or j > 0 ):
-        P.append(i , j);
-        if D(i-1,j)=D(i,j):
+
+        P.append([i , j]);
+        #pdb.set_trace();
+        if D[i-1,j] == D[i,j]:
             i=i-1;
             continue;
-        if D(i,j-1)=D(i,j)
+        if D[i,j-1] == D[i,j]:
             j=j-1;
             continue;
 
@@ -52,7 +57,37 @@ def backtracing(D):
 
     return P;
 
+def backtracing_all(D):
 
+    (i , j) = D.shape;
+    # 注意要减1， 因为行和列从0下标开始！
+    i = i - 1;
+    j = j - 1;
+
+    P2 = [[]];
+    # 1 2 4
+    direction = 4;
+    while( i > 0 or j > 0 ):
+
+        P2[0].append(direction);
+        direction = 0; #clear direction
+        #pdb.set_trace();
+        if D[i-1,j] == D[i,j]: # 1
+            direction += 1;
+        if D[i,j-1] == D[i,j]: # 2
+            direction += 2;
+        if direction < 1:
+            direction += 4;
+
+        # 4
+
+    (i , j) = D.shape;
+    i = i - 1;
+    j = j - 1;
+
+
+
+    return P2;
 
 
 
@@ -64,7 +99,9 @@ if __name__ == '__main__':
 
     D = align(seq_A , seq_B);
 
-    backtracing(D);
+    print D;
+
+    print backtracing(D);
 
     #pdb.set_trace();
 

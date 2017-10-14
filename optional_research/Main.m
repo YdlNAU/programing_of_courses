@@ -51,6 +51,25 @@ b = [8, 16, 12]';
 
 [target,x] = simplex_method(c,A,b);
 
+% P135 write the function for ILP
+
+c = [40 90 ]';
+A = [9 7;
+     7 20];
+     
+b = [56 70]';
+
+lb = [0, 0]';
+ub=[Inf Inf]';
+ctype = "UU";
+vartype = "II"; % C or I
+sense = -1;     % 1 is minimization; -1 is maximization
+
+%首先直接用glpk解
+[xopt, fopt, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, sense);
+
+
+[xopt, fopt, errnum, extra] = ILP_fzdjf (c, A, b, lb, ub, ctype, vartype, sense);
 
 
 
